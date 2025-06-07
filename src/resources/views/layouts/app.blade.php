@@ -28,33 +28,33 @@
             <a href="/sell" class="button">出品</a>
         </form>
         <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var input = document.querySelector('.search-box input[name="keyword"]');
-        var resultsDiv = document.getElementById('results');
+            document.addEventListener('DOMContentLoaded', function() {
+                var input = document.querySelector('.search-box input[name="keyword"]');
+                var resultsDiv = document.getElementById('results');
 
-        input.addEventListener('input', function() {
-            var keyword = this.value;
-            if (keyword.length >= 2) {
-                fetch('{{ route("search-autocomplete") }}?keyword=' + encodeURIComponent(keyword))
-                    .then(response => response.json())
-                    .then(data => {
-                        resultsDiv.innerHTML = '';
-                        data.forEach(item => {
-                            var itemElement = document.createElement('div');
-                            itemElement.textContent = item.name;
-                            itemElement.addEventListener('click', function() {
-                                input.value = this.textContent;
-                                resultsDiv.innerHTML = '';
+                input.addEventListener('input', function() {
+                    var keyword = this.value;
+                    if (keyword.length >= 2) {
+                        fetch('{{ route("search-autocomplete") }}?keyword=' + encodeURIComponent(keyword))
+                        .then(response => response.json())
+                        .then(data => {
+                            resultsDiv.innerHTML = '';
+                            data.forEach(item => {
+                                var itemElement = document.createElement('div');
+                                itemElement.textContent = item.name;
+                                itemElement.addEventListener('click', function() {
+                                    input.value = this.textContent;
+                                    resultsDiv.innerHTML = '';
+                                });
+                                resultsDiv.appendChild(itemElement);
                             });
-                            resultsDiv.appendChild(itemElement);
                         });
-                    });
-            } else {
-                resultsDiv.innerHTML = '';
-            }
-        });
-    });
-</script>
+                    } else {
+                        resultsDiv.innerHTML = '';
+                    }
+                });
+            });
+        </script>
     </header>
     <main>
         @yield('content')

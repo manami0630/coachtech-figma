@@ -7,7 +7,6 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CheckoutController;
 
 
 
@@ -49,8 +48,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/toggle-like', [LikeController::class, 'toggle'])->name('likes.toggle');
 });
 
-
-
-Route::post('/create-checkout-session', [CheckoutController::class, 'create'])->name('checkout.create');
-Route::get('/success', function () { return view('success'); })->name('checkout.success');
-Route::get('/cancel', function () { return view('cancel'); })->name('checkout.cancel');
