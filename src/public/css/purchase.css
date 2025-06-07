@@ -1,0 +1,148 @@
+.purchase__content {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 100px;
+}
+
+.purchase {
+    padding: 10px 30px;
+    width: 70%;
+}
+
+.purchase__img {
+    width: 25%;
+    margin: 50px 0;
+}
+
+.purchase__img img {
+    width: 100%;
+}
+
+.group,
+.purchase__group {
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.purchase__flex {
+    padding: 50px 0;
+    padding-left: 30px;
+}
+
+.brand_name {
+    display: block;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 24px;
+}
+
+.purchase__flex input {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.purchase__group {
+    padding: 25px 0 50px 0;
+    display: block;
+}
+
+.purchase__label {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 25px;
+}
+
+.purchase__method {
+    width: 20%;
+}
+
+.method {
+    width: 40%;
+    padding: 5px 0;
+    margin: 40px 0 0 80px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.change {
+    text-decoration: none;
+    color: rgb(0, 94, 255);
+    padding-right: 25px;
+}
+
+.profile-form__input {
+    width: 90%;
+    padding: 5px 0;
+    margin-left: 60px;
+    font-size: 18px;
+}
+
+.information {
+    padding-top: 35px;
+}
+
+input {
+    border: none;
+}
+
+.form__purchase {
+    width: 30%;
+    padding: 50px 15px;
+}
+
+.label {
+    width: 40%;
+    font-size: 18px;
+}
+
+.group__flex {
+    border: 1px solid black;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.purchase-form__btn {
+    width: 100%;
+    padding: 8px 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background: #ff2f00b4;
+    border: none;
+    border-radius: 3px;
+    margin: 50px 0 20px 0;
+}
+
+.group__flex input {
+    font-size: 18px;
+    width: 46%;
+}
+
+.form__error {
+    height: 25px;
+    color: #ff0000;
+    text-align: left;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .purchase {
+        width: 65%;
+    }
+    .form__purchase {
+        width: 35%;
+    }
+    .label {
+        font-size: 16px;
+    }
+    .group__flex input {
+        font-size: 16px;
+    }
+}

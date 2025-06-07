@@ -1,0 +1,105 @@
+.form {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+.form__heading {
+    color: rgba(100, 100, 100, 0.748);
+    text-align: left;
+    font-size: 20px;
+}
+
+.form__heading h3 {
+    border-bottom: 2px solid rgba(100, 100, 100, 0.748);
+    margin-top: 70px;
+}
+
+.form__group {
+    margin: 25px 0;
+}
+
+.form__label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 3px 0;
+    font-size: 18px;
+}
+
+.condition,
+.form__text {
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+.condition {
+    margin-top: 8px;
+}
+
+.form__img {
+    width: 100%;
+    border: 1px dashed rgba(100, 100, 100, 0.748);
+    border-radius: 5px;
+    padding: 40px 0;
+}
+
+.form__img img {
+    width: 50%;
+    margin: 5px;
+}
+
+.exhibit-form__btn {
+    background: #ff2f00b4;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 10px 0;
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    margin-top: 50px;
+}
+
+.file-btn {
+    color: #ff2f00b4;
+    font-size: 18px;
+    background-color: white;
+    font-weight: bold;
+    border: 2px solid #ff2f00b4;
+    border-radius: 5px;
+    padding: 3px 10px;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.form__error {
+    height: 25px;
+    color: #ff0000;
+    text-align: left;
+}
+
+.category-item input {
+    display: none;
+}
+
+.category-label {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 20px;
+    border: 2px solid #ff2f00b4;
+    color: #ff2f00b4;
+    margin: 4px;
+    background-color: #fff;
+}
+
+input[type="checkbox"]:checked+label {
+    background-color: #ff4d4d;
+    color: #fff;
+}

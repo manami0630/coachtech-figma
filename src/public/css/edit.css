@@ -1,0 +1,73 @@
+.form {
+    text-align: center;
+}
+
+.form__heading {
+    margin: 50px 0 auto;
+    font-weight: bold;
+}
+
+.form__group {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.profile-form__label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.profile-form__input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.form__error {
+    height: 25px;
+    color: #ff0000;
+    text-align: left;
+}
+
+.profile-form__btn {
+    width: 100%;
+    padding: 8px 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background: #ff2f00b4;
+    border: none;
+    border-radius: 3px;
+    margin: 50px 0 20px 0;
+}
+
+.form__img img {
+    background-color: rgba(144, 144, 144, 0.322);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+.form__img {
+    text-align: left;
+}
+
+.file-btn {
+    color: #ff2f00b4;
+    font-size: 18px;
+    background-color: white;
+    font-weight: bold;
+    border: 2px solid #ff2f00b4;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin-left: 30px;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .form__img img {
+        width: 100px;
+        height: 100px;
+    }
+}

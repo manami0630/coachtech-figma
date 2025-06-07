@@ -1,0 +1,96 @@
+.profile__image {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile__image img {
+    width: 410px;
+    height: 410px;
+}
+
+.product-content {
+    margin: 60px 30px 0 30px;
+}
+
+.product-link {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.profile__button {
+    padding: 20px 20px 5px 100px;
+    border-bottom: 2px solid black;
+}
+
+.profile__btn {
+    color: black;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 20px;
+    align-items: end;
+    font-weight: bold;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+    padding: 30px 5px;
+}
+
+.user__img {
+    display: flex;
+    background-color: rgba(144, 144, 144, 0.322);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.user__img img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.change {
+    margin-top: 75px;
+    margin-left: 10px;
+}
+
+.change a {
+    border: 2px solid #ff2f00b4;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.change__button {
+    color: #ff2f00b4;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user__name {
+    margin-top: 70px;
+    width: 20%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.profile__btn.active {
+    color: red;
+}
+
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .profile__image img {
+        width: 405px;
+        height: 405px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .profile__image img {
+        width: 310px;
+        height: 310px;
+    }
+}

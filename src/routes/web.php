@@ -1,18 +1,56 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/item/{id}', [ItemController::class, 'details']);
+
+Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/items/search', [ItemController::class, 'search'])->name('items.search');
+
+Route::get('/search-autocomplete', [ItemController::class, 'searchAutocomplete'])->name('search-autocomplete');
+
+Route::get('/item/{id}', [ItemController::class, 'show'])->name('item.show');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+    Route::get('/purchase/address/{id}', [AddressController::class, 'change'])->name('change');
+
+    Route::post('/purchase/address/update', [AddressController::class, 'update'])->name('address.update');
+
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+
+    Route::get('/mypage', [ProfileController::class, 'profile'])->name('profile.items');
+
+    Route::post('/product/upload', [ItemController::class, 'store'])->name('product.store');
+
+    Route::post('/purchase/{id}', [ItemController::class, 'purchase'])->name('purchase');
+
+    Route::get('/sell', [ItemController::class, 'exhibit'])->name('exhibit');
+
+
+
+    Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
+    Route::post('/toggle-like', [LikeController::class, 'toggle'])->name('likes.toggle');
 });
+
+
+
+Route::post('/create-checkout-session', [CheckoutController::class, 'create'])->name('checkout.create');
+Route::get('/success', function () { return view('success'); })->name('checkout.success');
+Route::get('/cancel', function () { return view('cancel'); })->name('checkout.cancel');
