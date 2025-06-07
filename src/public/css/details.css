@@ -1,0 +1,180 @@
+.details__content {
+    display: flex;
+}
+
+.details__image {
+    width: 50%;
+}
+
+.details__image img {
+    padding: 50px 15px 30px 30px;
+    width: 100%;
+}
+
+.details {
+    width: 50%;
+    padding: 50px 15px 30px 30px;
+}
+
+.form__group input {
+    width: 100%;
+    border: none;
+}
+
+.comment__btn,
+.form__btn {
+    background: #ff2f00b4;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 25px 0;
+}
+
+.comment__btn {
+    text-decoration: none;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.brand_name {
+    font-size: 12px;
+}
+
+.price {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.form__group {
+    margin-top: 15px;
+}
+
+.form__group img {
+    margin: 0 15px;
+    width: 7%;
+}
+
+.form__label {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.group__flex {
+    display: flex;
+    margin: 20px 0;
+}
+
+.group__flex input {
+    font-size: 14px;
+    width: 60%;
+}
+
+.label {
+    width: 30%;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.comment_label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin-top: 30px;
+}
+
+textarea {
+    width: 100%;
+}
+
+.comment_input {
+    width: 100%;
+    padding: 10px 5px;
+    background-color: rgba(155, 155, 155, 0.336);
+    border: none;
+}
+
+.flex__group {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.flex__group img {
+    background-color: rgba(133, 132, 132, 0.579);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.category {
+    margin-right: 10px;
+    background-color: rgba(160, 160, 160, 0.13);
+    padding: 2px 15px;
+    border-radius: 15px;
+}
+.form__error {
+    height: 25px;
+    color: #ff0000;
+    text-align: left;
+}
+
+.comments p {
+    background-color: rgba(160, 160, 160, 0.13);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.comments__count {
+    font-weight: bold;
+    font-size: 22px;
+    color: rgb(115, 115, 115);
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.count {
+    display: flex;
+}
+
+.count__star {
+    margin: 0 15px;
+    width: 7%;
+    text-align: center;
+}
+
+.count__topic {
+    margin: 0 15px;
+    width: 7%;
+    text-align: center;
+}
+
+#like-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#like-button.liked {
+    color: gold;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .category {
+        margin-right: 5px;
+        padding: 2px 8px;
+        font-size: 12px;
+    }
+}
