@@ -9,7 +9,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OrderController;
 
 
-
+Route::get('/attestation', [ItemController::class, 'attestation']);
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
@@ -42,9 +42,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sell', [ItemController::class, 'exhibit'])->name('exhibit');
 
-
-
-    Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
-    Route::post('/toggle-like', [LikeController::class, 'toggle'])->name('likes.toggle');
+    Route::post('/likes/toggle', [LikeController::class, 'toggle'])->name('likes.toggle');
 });
 

@@ -13,6 +13,11 @@
     @foreach ($items as $item)
     <div class="product-content">
         <a href="/item/{{$item->id}}" class="product-link">
+            @if($item->status == 'sold')
+            <div class="sold-label">
+                Sold
+            </div>
+            @endif
             <img id="image-preview" src="{{ asset('storage/' . $item->image) }}">
             <div class="item-name">
                 <p>{{$item->name}}</p>

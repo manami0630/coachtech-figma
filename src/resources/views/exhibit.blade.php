@@ -14,7 +14,7 @@
         <label class="form__label">商品画像</label>
         <div class="form__img">
             <img id="image-preview" src="">
-            <input type="file" id="upload-image" class="image" name="profile_image" accept="image/*" style="display: none;">
+            <input type="file" id="upload-image" class="image" name="image" accept="image/*" style="display: none;">
             <button type="button" id="upload-button" class="file-btn">画像を選択する</button>
         </div>
         <div class="form__error">

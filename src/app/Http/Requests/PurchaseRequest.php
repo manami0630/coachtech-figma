@@ -24,8 +24,6 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'item_id' => 'required',
             'payment_method' => 'required',
             'item_id' => 'required|integer',
             'postal_code' => 'required|regex:/^\d{3}-\d{4}$/',

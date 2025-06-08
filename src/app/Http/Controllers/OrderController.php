@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Item;
 
 class OrderController extends Controller
 {
@@ -27,6 +29,13 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect('/');
+        $item = Item::find($request->input('item_id'));
+        if ($item) {
+            $item->status = 'sold';
+            $item->save();
+        }
+
+        return redirect('/')->with('success', 'Order completed!');
     }
 }
+
