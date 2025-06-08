@@ -53,10 +53,15 @@
 .form__group {
     margin-top: 15px;
 }
-
+.form__group i,
 .form__group img {
-    margin: 0 15px;
-    width: 7%;
+    margin: 0 16px;
+    width: 6%;
+}
+
+.form__group i {
+    font-size: 36px;
+    text-align: center;
 }
 
 .form__label {
@@ -159,16 +164,15 @@ textarea {
     width: 7%;
     text-align: center;
 }
-
-#like-button {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
+.fa-star {
+    color: gold;
 }
 
-#like-button.liked {
-    color: gold;
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .form__group i {
+        font-size: 30px;
+        text-align: center;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 850px) {
@@ -176,5 +180,9 @@ textarea {
         margin-right: 5px;
         padding: 2px 8px;
         font-size: 12px;
+    }
+
+    .form__group i {
+        font-size: 24px;
     }
 }

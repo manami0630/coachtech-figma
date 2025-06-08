@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
+    public function attestation()
+    {
+        return view('attestation');
+    }
+
     public function index(Request $request)
     {
         if ($request->has('tab') && $request->tab == 'mylist') {
@@ -65,8 +70,8 @@ class ItemController extends Controller
     {
         $validated = $request->validated();
 
-        if ($request->hasFile('profile_image')) {
-            $path = $request->file('profile_image')->store('public/uploads');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/uploads');
             $image_path = str_replace('public/', '', $path);
         }
 
@@ -91,13 +96,11 @@ class ItemController extends Controller
     public function show($id)
     {
         $item = Item::findOrFail($id);
-        $liked = Like::where('user_id', Auth::id())
-            ->where('item_id', $item->id)
-            ->exists();
+        $likedItems = Like::where('user_id', auth()->id())->pluck('item_id')->toArray();
         $likesCount = $item->likes()->count();
         $comments = Comment::where('item_id', $id)->with('user')->get();
 
-        return view('details', compact('item', 'comments', 'likesCount', 'liked'));
+        return view('details', compact('item', 'comments', 'likesCount', 'likedItems'));
     }
 }
 

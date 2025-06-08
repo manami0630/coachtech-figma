@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/details.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
@@ -17,8 +18,8 @@
                 <input class="brand_name" type="text" name="brand_name"  value="{{ $item->brand_name }}" readonly>
                 <input class="price" type="text" name="price"  value="¥{{ $item->price }} (税込)" readonly>
                 <div class="form__group">
-                    <img class="like-btn" data-item-id="{{ $item->id }}" src="{{ asset('storage/image/icons8-star-50.png') }}" alt="star">
-                    <img src="{{ asset('storage/image/icons8-topic-50.png') }}" alt="topic">
+                    <i class="fa fa-star-o like-icon" data-item-id="{{ $item->id }}"></i>
+                    <i class="fa fa-comment-o"></i>
                 </div>
                 <div class="count">
                     <div class="count__star">{{ $likesCount }}</div>
@@ -53,7 +54,7 @@
             <div class="comments__count">コメント({{ $comments->count() }})</div>
                 @foreach($comments as $comment)
                 <div class="comment">
-                    <img src="{{ $comment->address->profile_image ?? 'default-profile.png' }}" style="width:40px; height:40px; border-radius:50%;">
+                    <img src="{{ asset('storage/profile_image/' . ($comment->address->profile_image ?? 'default-profile.png')) }}" style="width:40px; height:40px; border-radius:50%;">
                     <strong>{{ $comment->user->name }}</strong>
                     <p>{{ $comment->content }}</p>
                 </div>
@@ -91,25 +92,42 @@
             </form>
         </div>
         @endif
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            document.querySelectorAll('.like-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemId = this.dataset.itemId;
+            var likedItems = @json($likedItems).map(String);
 
-                    fetch('/likes', {
+            $(function() {
+                $('.like-icon').each(function() {
+                    var icon = $(this);
+                    var itemId = String(icon.data('item-id'));
+
+                    if (likedItems.includes(itemId)) {
+                        icon.removeClass('fa-star-o').addClass('fa-star');
+                    } else {
+                        icon.removeClass('fa-star').addClass('fa-star-o');
+                    }
+                });
+
+                $(document).on('click', '.like-icon', function() {
+                    var icon = $(this);
+                    var itemId = String(icon.data('item-id'));
+
+                    $.ajax({
+                        url: '{{ route("likes.toggle") }}',
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        data: {
+                            item_id: itemId,
+                            _token: '{{ csrf_token() }}'
                         },
-                        body: JSON.stringify({ item_id: itemId })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if(data.success){
-                            alert('いいねしました！');
-                        } else {
-                            alert('エラーが発生しました。');
+                        success: function(res) {
+                            if (res.liked) {
+                                icon.removeClass('fa-star-o').addClass('fa-star');
+                            } else {
+                                icon.removeClass('fa-star').addClass('fa-star-o');
+                            }
+                        },
+                        error: function() {
+                            alert('エラーが発生しました');
                         }
                     });
                 });
