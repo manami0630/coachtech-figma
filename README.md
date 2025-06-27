@@ -22,7 +22,8 @@
 - MySQL 8.0.26
 
 ## ER図
-![スクリーンショット 2025-06-20 145446](https://github.com/user-attachments/assets/bd8179ea-5a57-4c9d-92cb-2699a1840b07)
+![スクリーンショット 2025-06-10 150919](https://github.com/user-attachments/assets/c1ddc759-74d6-41e0-9596-a7e80913a37c)
+
 
 ## URL  
 - 開発環境: [http://localhost](http://localhost)  
