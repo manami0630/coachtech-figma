@@ -24,11 +24,21 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
         return [
+<<<<<<< Updated upstream
             'payment_method' => 'required',
             'item_id' => 'required|integer',
             'postal_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address' => 'required',
             'building_name' => 'nullable',
+=======
+            'item_name' => 'required|string|max:255',
+            'amount' => 'required|integer|min:1',
+            'payment_method' => 'required|string',
+            'item_id' => 'required|string',
+            'postal_code' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+            'building_name' => 'nullable|string|max:255',
+>>>>>>> Stashed changes
         ];
     }
     public function messages()

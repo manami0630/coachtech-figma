@@ -24,8 +24,8 @@
                 <div>
                     <select class="method" name="payment_method">
                         <option value="">選択してください</option>
-                        <option value="コンビニ払い">コンビニ払い</option>
-                        <option value="カード支払い">カード支払い</option>
+                        <option value="konbini">コンビニ払い</option>
+                        <option value="card">カード支払い</option>
                     </select>
                 </div>
                 <div class="form__error">
@@ -85,5 +85,50 @@
             });
         });
     </script>
+<<<<<<< Updated upstream
+=======
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stripe = Stripe('{{ env("STRIPE_PUBLIC_KEY") }}');
+            const form = document.querySelector('.purchase__content');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                fetch('{{ route('orders.createStripeSession') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({
+                        item_name: '{{ $item->name }}',
+                        amount: {{ intval($item->price) }},
+                        payment_method: document.querySelector('.method').value,
+                        item_id: '{{ $item->id }}',
+                        postal_code: '{{ $address->postal_code }}',
+                        address: '{{ $address->address }}',
+                        building_name: '{{ $address->building_name }}',
+                    }),
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Stripe session id:', data.id);
+                    return stripe.redirectToCheckout({ sessionId: data.id });
+                })
+                .then(result => {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('決済エラーが発生しました。');
+                });
+            });
+        });
+    </script>
+>>>>>>> Stashed changes
 </div>
 @endsection

@@ -18,8 +18,12 @@ class CreateAddressesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('postal_code');
             $table->text('address');
+<<<<<<< Updated upstream
             $table->string('building_name');
             $table->string('profile_image')->nullable();
+=======
+            $table->string('building_name')->nullable();
+>>>>>>> Stashed changes
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

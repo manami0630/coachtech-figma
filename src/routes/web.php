@@ -7,9 +7,14 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OrderController;
+//use App\Http\Controllers\AuthController;
 
+<<<<<<< Updated upstream
 
 Route::get('/attestation', [ItemController::class, 'attestation']);
+=======
+//Route::post('/register', [AuthController::class, 'register'])->name('register');
+>>>>>>> Stashed changes
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
@@ -43,5 +48,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ItemController::class, 'exhibit'])->name('exhibit');
 
     Route::post('/likes/toggle', [LikeController::class, 'toggle'])->name('likes.toggle');
+<<<<<<< Updated upstream
+=======
+
+    Route::post('/orders/create-checkout-session', [OrderController::class, 'createStripeSession'])->name('orders.createStripeSession');
+
+    Route::get('/orders/success', [OrderController::class, 'success'])->name('orders.success');
+
+    Route::get('/orders/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+>>>>>>> Stashed changes
 });
 
