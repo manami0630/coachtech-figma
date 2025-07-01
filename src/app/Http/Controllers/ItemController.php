@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
-    public function attestation()
-    {
-        return view('attestation');
-    }
-
     public function index(Request $request)
     {
         if ($request->has('tab') && $request->tab == 'mylist') {

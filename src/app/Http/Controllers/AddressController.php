@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddressRequest;
 use Illuminate\Http\Request;
 use App\Models\Address;
-use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {
