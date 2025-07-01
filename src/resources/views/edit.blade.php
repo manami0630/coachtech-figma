@@ -14,7 +14,7 @@
     <div class="form__group">
         <div class="form__img">
             @if ($address)
-            <img id="image-preview" src="{{ asset('storage/' . $address->profile_image) }}" style="max-width:200px;">
+            <img id="image-preview" src="{{ asset('storage/' . $user->profile_image) }}" style="max-width:200px;">
             @else
             <img id="image-preview" src="{{ asset('storage/default-image.jpg') }}">
             @endif

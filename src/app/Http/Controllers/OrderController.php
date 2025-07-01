@@ -6,27 +6,14 @@ use App\Http\Requests\PurchaseRequest;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Item;
-<<<<<<< Updated upstream
-=======
 use App\Models\Address;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
->>>>>>> Stashed changes
 
 class OrderController extends Controller
 {
-    public function store(Request $request)
+    public function purchase($id)
     {
-<<<<<<< Updated upstream
-        $request->validate([
-            'postal_code' => 'required|string',
-            'address' => 'required|string',
-            'building_name' => 'nullable|string',
-            'payment_method' => 'required|string',
-            'item_id' => 'required|integer',
-        ]);
-
-=======
         $user = auth()->user();
         $item = Item::find($id);
         $address = Address::where('user_id', $user->id)->first();
@@ -35,6 +22,8 @@ class OrderController extends Controller
 
     public function createStripeSession(PurchaseRequest $request)
     {
+        $validated = $request->validated();
+
         $user = auth()->user();
 
         $item_id = $request->input('item_id');
@@ -103,40 +92,25 @@ class OrderController extends Controller
 
         $item = Item::find($itemId);
         if (!$item || $item->status === 'sold') {
-            return redirect('/mypage')->with('error', 'この商品は既に販売済みです。');
+            return redirect('/')->with('error', 'この商品は既に販売済みです。');
         }
         $existingOrder = Order::where('user_id', auth()->id())->where('item_id', $item->id)->first();
         if ($existingOrder) {
             return redirect('/')->with('error', 'この商品は既に購入済みです。');
         }
 
->>>>>>> Stashed changes
         $order = new Order();
         $order->user_id = auth()->id();
-        $order->item_id = $request->input('item_id');
-        $order->postal_code = $request->input('postal_code');
-        $order->address = $request->input('address');
-        $order->building_name = $request->input('building_name');
-        $order->payment_method = $request->input('payment_method');
-
+        $order->item_id = $item->id;
+        $order->postal_code = $postal_code;
+        $order->address = $address;
+        $order->building_name = $building_name;
+        $order->payment_method = $payment_method;
         $order->save();
 
-<<<<<<< Updated upstream
-        $item = Item::find($request->input('item_id'));
-        if ($item) {
-            $item->status = 'sold';
-            $item->save();
-        }
-
-        return redirect('/')->with('success', 'Order completed!');
-    }
-}
-
-=======
         $item->status = 'sold';
             $item->save();
 
         return view('list', ['items' => Item::all()]);
     }
 }
->>>>>>> Stashed changes

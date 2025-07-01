@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Models\Address;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Category;
@@ -16,7 +15,7 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->has('tab') && $request->tab == 'mylist') {
+        if ($request->has('page') && $request->page == 'mylist') {
             $items = Item::whereHas('likes', function($query){
                 $query->where('user_id', Auth::id());
             })->get();
@@ -44,14 +43,6 @@ class ItemController extends Controller
         $items = Item::where('name', 'LIKE', '%' . $keyword . '%')->get();
 
         return view('list', compact('items'));
-    }
-
-    public function purchase($id)
-    {
-        $user = auth()->user();
-        $item = Item::find($id);
-        $address = Address::where('user_id', $user->id)->first();
-        return view('purchase', compact('item','user','address'));
     }
 
     public function exhibit()

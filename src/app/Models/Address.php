@@ -16,7 +16,6 @@ class Address extends Model
         'postal_code',
         'address',
         'building_name',
-        'profile_image'
     ];
 
     public function user()

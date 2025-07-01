@@ -6,8 +6,7 @@
 
 @section('content')
 <div>
-    <form class="purchase__content" action="{{ route('orders.store') }}" method="post" enctype="multipart/form-data">
-    @csrf
+    <form class="purchase__content">
         <input type="hidden" name="item_id" value="{{ $item->id }}">
         <div class="purchase">
             <div class="group">
@@ -85,8 +84,6 @@
             });
         });
     </script>
-<<<<<<< Updated upstream
-=======
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -129,6 +126,5 @@
             });
         });
     </script>
->>>>>>> Stashed changes
 </div>
 @endsection

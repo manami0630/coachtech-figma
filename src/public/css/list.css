@@ -30,7 +30,7 @@
     font-size: 20px;
 }
 
-.list__button a:active {
+.list__button a.active {
     color: red;
 }
 

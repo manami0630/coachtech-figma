@@ -6,8 +6,8 @@
 
 @section('content')
 <div class="list__button">
-    <a href="{{ route('items.index') }}" class="list__btn">おすすめ</a>
-    <a href="{{ route('items.index') }}?tab=mylist" class="list__btn">マイリスト</a>
+    <a href="{{ route('items.index') }}" class="list__btn {{ request()->query('page') ? '' : 'active' }}">おすすめ</a>
+    <a href="{{ route('items.index') }}?page=mylist" class="list__btn {{ request()->query('page') == 'mylist' ? 'active' : '' }}">マイリスト</a>
 </div>
 <div class="list__image">
     @foreach ($items as $item)
