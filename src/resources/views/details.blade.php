@@ -54,11 +54,7 @@
             <div class="comments__count">コメント({{ $comments->count() }})</div>
                 @foreach($comments as $comment)
                 <div class="comment">
-<<<<<<< Updated upstream
-                    <img src="{{ asset('storage/profile_image/' . ($comment->address->profile_image ?? 'default-profile.png')) }}" style="width:40px; height:40px; border-radius:50%;">
-=======
-                    <img src="{{ asset('storage/' . $comment->user->profile_image) }}" style="width:40px; height:40px; border-radius:50%;">
->>>>>>> Stashed changes
+                    <img src="{{ asset('storage/' . $comment->user->profile_image) }}">
                     <strong>{{ $comment->user->name }}</strong>
                     <p>{{ $comment->content }}</p>
                 </div>

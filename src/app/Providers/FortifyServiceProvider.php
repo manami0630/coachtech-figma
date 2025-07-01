@@ -10,8 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Http\Requests\LoginRequest;
-use Laravel\Fortify\Http\Requests\RegisterRequest as FortifyRegisterRequest;
-use App\Http\Requests\RegisterRequest;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -50,7 +49,5 @@ class FortifyServiceProvider extends ServiceProvider
             \App\Actions\Fortify\RedirectAfterRegister::class
         );
         $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);
-        $this->app->bind(FortifyRegisterRequest::class,
-        RegisterRequest::class);
     }
 }

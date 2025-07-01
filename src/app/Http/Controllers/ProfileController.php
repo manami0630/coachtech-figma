@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AddressRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\Item;
@@ -19,35 +20,38 @@ class ProfileController extends Controller
         return view('edit', compact('user', 'address'));
     }
 
-    public function update(AddressRequest $request)
+    public function update(AddressRequest $addressRequest, ProfileRequest $profileRequest)
     {
-        $validated = $request->validated();
+        $validatedAddress = $addressRequest->validated();
+        $validatedProfile = $profileRequest->validated();
 
         $user = auth()->user();
-        $user->name = $validated['name'];
+
+        if ($profileRequest->hasFile('profile_image')) {
+            $path = $profileRequest->file('profile_image')->store('public/profile_images');
+            $user->profile_image = str_replace('public/', '', $path);
+        }
+
+        if (isset($validatedAddress['name'])) {
+            $user->name = $validatedAddress['name'];
+        }
         $user->save();
 
         $address = Address::firstOrNew(['user_id' => $user->id]);
 
-        if ($request->hasFile('profile_image')) {
-            $path = $request->file('profile_image')->store('public/profile_images');
-            $address->profile_image = str_replace('public/', '', $path);
+        if (isset($validatedAddress['postal_code'])) {
+            $address->postal_code = $validatedAddress['postal_code'];
         }
 
-        if (isset($validated['postal_code'])) {
-            $address->postal_code = $validated['postal_code'];
+        if (isset($validatedAddress['address'])) {
+            $address->address = $validatedAddress['address'];
         }
 
-        if (isset($validated['address'])) {
-            $address->address = $validated['address'];
-        }
-
-        if (isset($validated['building_name'])) {
-            $address->building_name = $validated['building_name'];
+        if (isset($validatedAddress['building_name'])) {
+            $address->building_name = $validatedAddress['building_name'];
         }
 
         $address->save();
-        $addresses = Address::all();
 
         return redirect('/');
     }
@@ -58,11 +62,11 @@ class ProfileController extends Controller
 
         $address = Address::where('user_id', $user->id)->first();
 
-        $tab = $request->query('tab');
+        $page = $request->query('page');
 
-        if ($tab === 'sell') {
+        if ($page === 'sell') {
             $items = Item::where('user_id', $user->id)->get();
-        } elseif ($tab === 'buy') {
+        } elseif ($page === 'buy') {
             $orders = Order::where('user_id', $user->id)->get();
 
             $items = Item::whereIn('id', $orders->pluck('item_id'))->get();

@@ -7,7 +7,7 @@
 @section('content')
 <div class="user">
     <div class="user__img">
-            <img id="user_image-preview" src="{{ asset('storage/' . $address->profile_image ) }}">
+        <img id="user_image-preview" src="{{ asset('storage/' . $user->profile_image ) }}">
     </div>
     <div class="user__name">
         {{$user->name}}
@@ -17,8 +17,8 @@
     </div>
 </div>
 <div class="profile__button">
-    <a href="{{ route('profile.items') }}?tab=sell" class="profile__btn">出品した商品</a>
-    <a href="{{ route('profile.items') }}?tab=buy" class="profile__btn">購入した商品</a>
+    <a href="{{ route('profile.items') }}?page=sell" class="profile__btn {{ request()->query('page') == 'sell' ? 'active' : '' }}">出品した商品</a>
+    <a href="{{ route('profile.items') }}?page=buy" class="profile__btn {{ request()->query('page') == 'buy' ? 'active' : '' }}">購入した商品</a>
 </div>
 <div class="profile__image">
     @foreach ($items as $item)
