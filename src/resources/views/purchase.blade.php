@@ -6,7 +6,8 @@
 
 @section('content')
 <div>
-    <form class="purchase__content">
+    <form class="purchase__content" method="POST" action="{{ route('orders.createStripeSession') }}">
+    @csrf
         <input type="hidden" name="item_id" value="{{ $item->id }}">
         <div class="purchase">
             <div class="group">
