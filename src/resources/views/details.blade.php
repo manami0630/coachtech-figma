@@ -54,7 +54,11 @@
             <div class="comments__count">コメント({{ $comments->count() }})</div>
                 @foreach($comments as $comment)
                 <div class="comment">
+                    @if($comment->user->profile_image)
                     <img src="{{ asset('storage/' . $comment->user->profile_image) }}">
+                    @else
+                    <img>
+                    @endif
                     <strong>{{ $comment->user->name }}</strong>
                     <p>{{ $comment->content }}</p>
                 </div>
