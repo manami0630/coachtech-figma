@@ -25,19 +25,17 @@ class OrderController extends Controller
         $validated = $request->validated();
 
         $user = auth()->user();
-
-        $item_id = $request->input('item_id');
+        $item_id = $validated['item_id'];
         $existingOrder = Order::where('user_id', $user->id)->where('item_id', $item_id)->first();
 
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
-        $amount = intval($request->input('amount'));
+        $amount = intval($validated['amount']);
 
-        $item_id = $request->input('item_id');
         if (empty($item_id)) {
             return response()->json(['error' => '商品IDが設定されていません。'], 400);
         }
-        $payment_method = $request->input('payment_method');
+        $payment_method = $validated['payment_method'];
         $session = Session::create([
             'payment_method_types' => [$payment_method],
             'line_items' => [[
@@ -59,7 +57,7 @@ class OrderController extends Controller
                 'address' => $request->input('address'),
                 'building_name' => $request->input('building_name'),
                 'payment_method' => $request->input('payment_method'),
-                'user_id' => auth()->user()->id,
+                'user_id' => $user->id,
             ],
         ]);
 

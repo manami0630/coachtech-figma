@@ -130,6 +130,7 @@ input {
     height: 25px;
     color: #ff0000;
     text-align: left;
+    margin-left: 60px;
 }
 
 @media (min-width: 768px) and (max-width: 850px) {
