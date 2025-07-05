@@ -15,6 +15,14 @@
 4. `php artisan key:generate`
 5. `php artisan migrate`
 6. `php artisan db:seed`
+7. `php artisan storage:link`
+
+* .envに以下の値を入力してください。
+   - MAIL_FROM_ADDRESS=例: your-email@example.com
+   - STRIPE_PUBLIC_KEY=例: pk_test_xxxxxxxxxxxxxxxxxxxxx
+   - STRIPE_SECRET_KEY=例: sk_test_xxxxxxxxxxxxxxxxxxxxx
+  
+※ 実運用には、適切なメールアドレスやStripeの本番用APIキーにアップデートしてください。
 
 ## 使用技術
 - PHP 7.4.9
