@@ -28,11 +28,7 @@
                         <option value="card">カード支払い</option>
                     </select>
                 </div>
-                <div class="form__error">
-                    @error('payment_method')
-                    {{ $message }}
-                    @enderror
-                </div>
+                <div class="form__error" id="payment-method-error">支払方法を選択してください</div>
             </div>
             <div class="purchase__group">
                 <div class="flex">
@@ -90,9 +86,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             const stripe = Stripe('{{ env("STRIPE_PUBLIC_KEY") }}');
             const form = document.querySelector('.purchase__content');
+            const methodSelect = document.querySelector('.method');
+            const paymentMethodError = document.getElementById('payment-method-error');
 
             form.addEventListener('submit', e => {
                 e.preventDefault();
+
+                if (!methodSelect.value) {
+                    paymentMethodError.style.display = 'block';
+                    return;
+                } else {
+                    paymentMethodError.style.display = 'none';
+                }
 
                 fetch('{{ route('orders.createStripeSession') }}', {
                     method: 'POST',
@@ -112,7 +117,6 @@
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log('Stripe session id:', data.id);
                     return stripe.redirectToCheckout({ sessionId: data.id });
                 })
                 .then(result => {
