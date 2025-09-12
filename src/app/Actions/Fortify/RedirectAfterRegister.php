@@ -11,4 +11,3 @@ class RedirectAfterRegister implements RegisterResponse
         return redirect('/mypage/profile');
     }
 }
-

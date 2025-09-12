@@ -89,4 +89,3 @@ class ItemController extends Controller
         return view('details', compact('item', 'comments', 'likesCount', 'likedItems'));
     }
 }
-

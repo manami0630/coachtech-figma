@@ -26,15 +26,15 @@ class CommentRequest extends FormRequest
         return [
             'item_id' => 'required|integer|exists:items,id',
             'user_id' => 'required|integer|exists:users,id',
-            'comment' => 'required|max:255',
+            'content' => 'required|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'comment.required' => 'コメントを入力してください',
-            'comment.max' => 'コメントは255文字以内で入力してください',
+            'content.required' => 'コメントを入力してください',
+            'content.max' => 'コメントは255文字以内で入力してください',
         ];
     }
 }

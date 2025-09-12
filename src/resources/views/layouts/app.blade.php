@@ -20,9 +20,9 @@
         <form class="nav-links" action="/logout" method="post">
         @csrf
             @if (Auth::check())
-            <button class="btn" type="submit">ログアウト</button>
+                <button class="btn" type="submit">ログアウト</button>
             @else
-            <a href="/login" class="btn">ログイン</a>
+                <a href="/login" class="btn">ログイン</a>
             @endif
             <a href="/mypage" class="btn">マイページ</a>
             <a href="/sell" class="button">出品</a>

@@ -48,12 +48,12 @@
                         <input class="profile-form__input" type="text" name="building_name" id="building_name" value="{{$address->building_name}}" readonly>
                     </div>
                     <div class="form__error">
-                    @error('postal_code')
-                    {{ $message }}
-                    @enderror
-                    @error('address')
-                    {{ $message }}
-                    @enderror
+                        @error('postal_code')
+                        {{ $message }}
+                        @enderror
+                        @error('address')
+                        {{ $message }}
+                        @enderror
                     </div>
                 </div>
             </div>

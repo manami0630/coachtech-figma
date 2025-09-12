@@ -26,7 +26,7 @@
 .profile__btn {
     color: black;
     text-decoration: none;
-    margin-left: 40px;
+    margin-left: 60px;
     font-size: 20px;
     align-items: end;
     font-weight: bold;
@@ -71,14 +71,29 @@
 
 .user__name {
     margin-top: 70px;
-    width: 20%;
-    font-size: 24px;
+    width: 10%;
+    font-size: 30px;
     font-weight: bold;
-    margin-left: 10px;
+    text-align: right;
+    margin-right: 320px;
+    margin-left: 25px;
 }
 
 .profile__btn.active {
     color: red;
+}
+
+.star {
+    color: #e5e5e5;
+    font-size: 1.8rem;
+}
+
+.star.full {
+    color: #ffd055;
+}
+
+.star.half {
+    color: #ffc107;
 }
 
 .sold-label {
@@ -93,15 +108,57 @@
     text-align: center;
 }
 
+.badge {
+    position: absolute;
+    top: 6px;
+    right: 375px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 9px;
+    font-size: 15px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.product-content {
+    position: relative;
+}
+
+.profile__btn {
+    position: relative;
+}
+
+.profile__btn .badge {
+    position: absolute;
+    top: 2px;
+    right: -45px;
+    background: red;
+    color: white;
+    border-radius: 10px;
+    padding: 0px 8px;
+    font-size: 18px;
+    display: inline-block;
+    font-weight: bold;
+}
+
 @media (min-width: 1400px) and (max-width: 1540px) {
     .profile__image img {
-        width: 405px;
-        height: 405px;
+        width: 400px;
+        height: 400px;
     }
 
     .sold-label {
         width: 405px;
         height: 405px;
+    }
+
+    .badge {
+        right: 368px;
+    }
+
+    .user__name {
+        width: 15%;
     }
 }
 
@@ -116,5 +173,14 @@
         width: 310px;
         height: 310px;
         font-size: 40px;
+    }
+
+    .badge {
+        right: 645px;
+    }
+
+    .user__name {
+        width: 25%;
+        margin-right: 80px;
     }
 }

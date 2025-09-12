@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('postal_code');
             $table->text('address');
             $table->string('building_name')->nullable();
+            $table->string('status')->default('取引中');
 
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

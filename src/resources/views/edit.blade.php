@@ -7,16 +7,16 @@
 @section('content')
 <form class="form" action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
 @csrf
-@method('PUT')
+    @method('PUT')
     <div class="form__heading">
         <h2>プロフィール設定</h2>
     </div>
     <div class="form__group">
         <div class="form__img">
             @if ($address)
-            <img id="image-preview" src="{{ asset('storage/' . $user->profile_image) }}" style="max-width:200px;">
+                <img id="image-preview" src="{{ asset('storage/' . $user->profile_image) }}" style="max-width:200px;">
             @else
-            <img id="image-preview" src="{{ asset('storage/default-image.jpg') }}">
+                <img id="image-preview" src="{{ asset('storage/default-image.jpg') }}">
             @endif
             <input type="file" id="upload-image" class="image" name="profile_image" accept="image/*" style="display: none;">
             <button type="button" id="upload-button" class="file-btn">画像を選択する</button>
@@ -83,5 +83,4 @@
         }
     });
 </script>
-
 @endsection

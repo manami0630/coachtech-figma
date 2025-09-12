@@ -14,7 +14,7 @@ class CommentController extends Controller
         Comment::create([
             'item_id' => $validated['item_id'],
             'user_id' => $validated['user_id'],
-            'content' => $validated['comment'],
+            'content' => $validated['content'],
         ]);
 
         return redirect()->back();

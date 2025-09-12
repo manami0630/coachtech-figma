@@ -7,6 +7,8 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\EvaluationController;
 
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
@@ -47,5 +49,17 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/orders/success', [OrderController::class, 'success'])->name('orders.success');
 
     Route::get('/orders/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+
+    Route::get('/item/chat/{id}', [TransactionController::class, 'chat'])->name('chat.show');
+
+    Route::post('/chats', [TransactionController::class, 'store'])->name('chats.store');
+
+    Route::put('/chats/{chat}', [TransactionController::class, 'update'])->name('chats.update');
+
+    Route::delete('/chats/{chat}', [TransactionController::class, 'destroy'])->name('chats.destroy');
+
+    Route::post('/evaluations', [EvaluationController::class, 'store'])->name('evaluations.store');
+
+    Route::post('/chat/read/{item_id}', [TransactionController::class, 'read'])->name('chat.read');
 });
 

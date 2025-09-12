@@ -107,7 +107,7 @@ class OrderController extends Controller
         $order->save();
 
         $item->status = 'sold';
-            $item->save();
+        $item->save();
 
         return view('list', ['items' => Item::all()]);
     }
