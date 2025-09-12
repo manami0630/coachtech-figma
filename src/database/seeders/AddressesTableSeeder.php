@@ -27,7 +27,7 @@ class AddressesTableSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'postal_code' => '838-0816',
+                'postal_code' => '807-0111',
                 'address' => '福岡県遠賀郡芦屋町白浜町',
             ],
         ]);

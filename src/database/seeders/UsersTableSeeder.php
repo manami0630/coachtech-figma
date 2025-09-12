@@ -22,18 +22,21 @@ class UsersTableSeeder extends Seeder
                 'email' => 'yamada@example.com',
                 'password' => bcrypt('password123'),
                 'email_verified_at' => $now->format('Y-m-d H:i'),
+                'profile_image' => 'image/default.png'
             ],
             [
                 'name' => '田中太郎',
                 'email' => 'tanaka@example.com',
                 'password' => bcrypt('password456'),
                 'email_verified_at' => $now->format('Y-m-d H:i'),
+                'profile_image' => 'image/default.png'
             ],
             [
                 'name' => '佐藤太郎',
                 'email' => 'satou@example.com',
                 'password' => bcrypt('password789'),
                 'email_verified_at' => $now->format('Y-m-d H:i'),
+                'profile_image' => 'image/default.png'
             ],
         ]);
     }

@@ -133,10 +133,14 @@
                                         @method('PUT')
                                         <strong class="user-name">{{ $chat->user->name ?? '' }}</strong>
                                         <img class="profile_image" src="{{ asset('storage/' . $chat->user->profile_image ) }}" width="150">
-                                        <img class="chat_image" src="{{ Storage::url('public/chats/' . $chat->image) }}" width="150">
-                                        <button type="button" class="cancel-edit" data-id="{{ $chat->id }}">キャンセル</button>
-                                        <button type="submit">更新</button>
-                                        <input class="chat-content" type="text" name="content" value="{{ $chat->content }}">
+                                        @if (!empty($chat->image))
+                                            <img class="chat_image" src="{{ Storage::url('public/chats/' . $chat->image) }}" width="150">
+                                        @endif
+                                        <div>
+                                            <button type="button" class="cancel-edit" data-id="{{ $chat->id }}">キャンセル</button>
+                                            <button type="submit">更新</button>
+                                            <input class="chat-content" type="text" name="content" value="{{ $chat->content }}">
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -158,17 +162,13 @@
                         <input class="content" type="text" name="content" id="chatInput" placeholder="取引メッセージを記入してください">
                     </div>
                     <div class="form__img">
-                        <div class="form__error">
-                            @error('image')
-                            {{ $message }}
-                            @enderror
-                        </div>
+                        <div class="form__error" id="image-error"></div>
                         <img id="image-preview" src="">
                         <input type="file" id="upload-image" class="image" name="image" accept="image/*" style="display: none;">
                         <button type="button" id="upload-button" class="file-btn">画像を追加</button>
                     </div>
                     <div class="form_group">
-                        <input class="form__btn" type="submit" value="送信">
+                        <input class="form__btn" type="image" src="{{ asset('storage/image/e99395e98ea663a8400f40e836a71b8c4e773b01.jpg') }}" alt="送信">
                     </div>
                 </form>
             </div>
