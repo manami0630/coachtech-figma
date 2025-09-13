@@ -178,7 +178,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-    // === チャット入力の保存と送信 ===
+        // === チャット入力の保存と送信 ===
         const chatInput = document.getElementById('chatInput');
         const chatForm = document.querySelector('.form');
         const imagePreview = document.getElementById('image-preview');
@@ -189,35 +189,6 @@
         chatInput.addEventListener('input', function () {
             localStorage.setItem('chatContent', chatInput.value);
         });
-
-    /*chatForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(chatForm);
-
-        fetch(chatForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                chatInput.value = '';
-                localStorage.removeItem('chatContent');
-                chatForm.reset();
-                imagePreview.src = '';
-                location.reload();
-            } else {
-                alert('保存に失敗しました');
-            }
-        })
-        .catch(error => {
-            console.error('送信エラー:', error);
-            alert('通信エラーが発生しました');
-        });
-    });*/
 
         // === 画像アップロードとプレビュー ===
         const uploadButton = document.getElementById('upload-button');
