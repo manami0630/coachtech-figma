@@ -42,14 +42,19 @@ class TransactionController extends Controller
                 $q->orderBy('created_at', 'desc');
             }
         ])
-        ->whereHas('item', function ($q) use ($user) {
-            $q->where('user_id', $user->id);
+        ->where(function ($q) use ($user) {
+            $q->where('user_id', $user->id)
+            ->orWhereHas('item', function ($q2) use ($user) {
+                $q2->where('user_id', $user->id);
+            });
         })
+        ->whereIn('status', ['取引中', '取引済'])
         ->get()
         ->sortByDesc(function ($order) {
             return optional($order->item->chats->first())->created_at
-                ?? \Carbon\Carbon::createFromDate(1970, 1, 1);
-        });
+            ?? \Carbon\Carbon::createFromDate(1970, 1, 1);
+        })
+        ->values();
 
         $isSeller = $order->item && $order->item->user_id == $user->id;
 

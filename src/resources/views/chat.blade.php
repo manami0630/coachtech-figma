@@ -9,8 +9,15 @@
     <div class="left-contents">
         <p class="other-transactions">その他の取引</p>
         @foreach ($transactions as $order)
-            @if ($order->item && $order->item->user_id == auth()->id() && $order->status === '取引中')
-                <a class="item-link" href="/item/chat/{{ $order->id }}">{{ $order->item->name }}</a>
+            @php
+                $isRelated = $order->item && ($order->item->user_id == auth()->id() || $order->user_id == auth()->id());
+                $isInProgress = $order->status === '取引中';
+                $isFinishedButUnevaluated = $order->status === '取引済' && !\App\Models\Evaluation::where('order_id', $order->id)->where('user_id', auth()->id())->exists();
+            @endphp
+            @if ($isRelated && ($isInProgress || $isFinishedButUnevaluated))
+                <a class="item-link" href="/item/chat/{{ $order->id }}">
+                    {{ $order->item->name }}
+                </a>
             @endif
         @endforeach
     </div>
@@ -162,7 +169,11 @@
                         <input class="content" type="text" name="content" id="chatInput" placeholder="取引メッセージを記入してください">
                     </div>
                     <div class="form__img">
-                        <div class="form__error" id="image-error"></div>
+                        <div class="form__error">
+                            @error('image')
+                            {{ $message }}
+                            @enderror
+                        </div>
                         <img id="image-preview" src="">
                         <input type="file" id="upload-image" class="image" name="image" accept="image/*" style="display: none;">
                         <button type="button" id="upload-button" class="file-btn">画像を追加</button>
