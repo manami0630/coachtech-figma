@@ -93,7 +93,7 @@
 5. `php artisan migrate --env=testing`
 
 ## 使用技術
-- PHP 7.4.9
+- PHP 8.4.4
 - Laravel 8.83.8
 - MySQL 8.0.26
 
