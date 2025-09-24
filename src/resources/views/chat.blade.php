@@ -166,14 +166,14 @@
                             {{ $message }}
                             @enderror
                         </div>
-                        <input class="content" type="text" name="content" id="chatInput" placeholder="取引メッセージを記入してください">
-                    </div>
-                    <div class="form__img">
                         <div class="form__error">
                             @error('image')
                             {{ $message }}
                             @enderror
                         </div>
+                        <input class="content" type="text" name="content" id="chatInput" placeholder="取引メッセージを記入してください">
+                    </div>
+                    <div class="form__img">
                         <img id="image-preview" src="">
                         <input type="file" id="upload-image" class="image" name="image" accept="image/*" style="display: none;">
                         <button type="button" id="upload-button" class="file-btn">画像を追加</button>
